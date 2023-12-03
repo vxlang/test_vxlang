@@ -38,44 +38,29 @@ int WINAPI DetourMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT 
 int main() {
     VL_CODE_FLATTENING_LV_BEGIN(3);
 
-    // Initialize MinHook.
-    if (MH_Initialize() != MH_OK) {
-        return 1;
-    }
+    do {
+        // Initialize MinHook.
+        if (MH_Initialize() != MH_OK) { break; }
 
-    // Create a hook for MessageBoxW, in disabled state.
-    if (MH_CreateHook(&MessageBoxW, &DetourMessageBoxW,
-        reinterpret_cast<LPVOID*>(&fpMessageBoxW)) != MH_OK) {
-        return 1;
-    }
+        // Create a hook for MessageBoxW, in disabled state.
+        if (MH_CreateHook(&MessageBoxW, &DetourMessageBoxW, reinterpret_cast<LPVOID*>(&fpMessageBoxW)) != MH_OK) { break; }
 
-    // or you can use the new helper function like this.
-    //if (MH_CreateHookApiEx(
-    //    L"user32", "MessageBoxW", &DetourMessageBoxW, &fpMessageBoxW) != MH_OK)
-    //{
-    //    return 1;
-    //}
+        // Enable the hook for MessageBoxW.
+        if (MH_EnableHook(&MessageBoxW) != MH_OK) { break; }
 
-    // Enable the hook for MessageBoxW.
-    if (MH_EnableHook(&MessageBoxW) != MH_OK) {
-        return 1;
-    }
+        // Expected to tell "Hooked!".
+        MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
 
-    // Expected to tell "Hooked!".
-    MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
+        // Disable the hook for MessageBoxW.
+        if (MH_DisableHook(&MessageBoxW) != MH_OK) { break; }
 
-    // Disable the hook for MessageBoxW.
-    if (MH_DisableHook(&MessageBoxW) != MH_OK) {
-        return 1;
-    }
+        // Expected to tell "Not hooked...".
+        MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
 
-    // Expected to tell "Not hooked...".
-    MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
+        // Uninitialize MinHook.
+        if (MH_Uninitialize() != MH_OK) { break; }
 
-    // Uninitialize MinHook.
-    if (MH_Uninitialize() != MH_OK) {
-        return 1;
-    }
+    } while (false);
 
     VL_CODE_FLATTENING_LV_END(3);
 
