@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_minhk", "project\test_minhk\test_minhk.vcxproj", "{042CB9A3-3A3D-4C46-8E31-A807192B3A52}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ext_start", "ext_start\ext_start.vcxproj", "{5F72A22A-8A87-4CF8-ADBC-3D1391B243FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -15,6 +17,10 @@ Global
 		{042CB9A3-3A3D-4C46-8E31-A807192B3A52}.Release|x64.Build.0 = Release|x64
 		{042CB9A3-3A3D-4C46-8E31-A807192B3A52}.Release|x86.ActiveCfg = Release|Win32
 		{042CB9A3-3A3D-4C46-8E31-A807192B3A52}.Release|x86.Build.0 = Release|Win32
+		{5F72A22A-8A87-4CF8-ADBC-3D1391B243FC}.Release|x64.ActiveCfg = Release|x64
+		{5F72A22A-8A87-4CF8-ADBC-3D1391B243FC}.Release|x64.Build.0 = Release|x64
+		{5F72A22A-8A87-4CF8-ADBC-3D1391B243FC}.Release|x86.ActiveCfg = Release|Win32
+		{5F72A22A-8A87-4CF8-ADBC-3D1391B243FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
