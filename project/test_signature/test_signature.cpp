@@ -1,33 +1,49 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define CODE_FLA_BEGIN \
-__asm__(\
-   "sti \n"\
-   "sti \n"\
-   "sti \n"\
-   "nop \n"\
-   "hlt \n"\
-)
-
-#define CODE_FLA_END \
-__asm__(\
-   "cli \n"\
-   "cli \n"\
-   "cli \n"\
-   "nop \n"\
-   "hlt \n"\
-);
+#include "vxlib_signature.h"
 
 //
 
 int main() {
 
-    CODE_FLA_BEGIN;
+    VL_CODE_FLATTENING_SIG_BEGIN;
 
-    printf("Hello, World ! \n");
+    printf("Hello, Obfuscator ! \n");
 
-    CODE_FLA_END;
+    VL_CODE_FLATTENING_SIG_END;
+
+    //
+
+    VL_CODE_FLATTENING_SIG_LV1_BEGIN;
+
+    printf("Hello, Obfuscator: 1 ! \n");
+
+    VL_CODE_FLATTENING_SIG_LV1_END;
+
+    //
+
+    VL_CODE_FLATTENING_SIG_LV2_BEGIN;
+
+    printf("Hello, Obfuscator: 2 ! \n");
+
+    VL_CODE_FLATTENING_SIG_LV2_END;
+
+    //
+
+    VL_CODE_FLATTENING_SIG_LV3_BEGIN;
+
+    printf("Hello, Obfuscator: 3 ! \n");
+
+    VL_CODE_FLATTENING_SIG_LV3_END;
+
+    //
+
+    VL_VIRTUALIZATION_SIG_BEGIN;
+
+    printf("Hello, Virtualizer ! \n");
+
+    VL_VIRTUALIZATION_SIG_END;
 
     return 1;
 }
