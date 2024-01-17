@@ -5,6 +5,10 @@
 
 //
 
+#pragma optimize("", off)
+
+//
+
 int main() {
 
     VL_CODE_FLATTENING_SIG_BEGIN;

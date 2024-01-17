@@ -1,0 +1,35 @@
+{
+	"Input" : "..\\bin\\Release\\test_ldr32.exe",
+	"Output" : "..\\bin\\Release\\test_ldr32.exe",
+	"Backup" : true,
+	"BaseSectionName" : "",
+	"SignatureMode" : false,
+	"Virtualizer" : {
+		"EntryPoint" : true,
+		"ReferenceCall" : false
+	},
+	"Obfuscator" : {
+		"EntryPoint" : false
+	},
+	"Packer" : {
+		"Enable" : true,
+		"SymbolData" : false,
+		"AxionMode" : false,
+		"Extension" : [
+		],
+		"RawData" : [
+		],
+		"DetectDebug" : {
+			"Enable" : true,
+			"Message" : "This program is debugging. Please exit the debugger and run it again."
+		},
+		"DetectPatch" : {
+			"Enable" : true,
+			"Message" : "The program shell code has been tampered with. Please run it again."
+		},
+		"CheckImage" : {
+			"Enable" : true,	
+			"Message" : "The executable image has been tampered with. Please run it again."			
+		}
+	}	
+}
