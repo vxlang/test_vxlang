@@ -16,7 +16,7 @@
 
 #pragma optimize("", off)
 
-void test_lazy_importer() {
+void test_virtualizer_lazy_importer() {
     VL_VIRTUALIZATION_BEGIN;
 
     void* user32 = LI_FN(LoadLibraryA)(xorstr_("user32.dll"));
@@ -27,10 +27,16 @@ void test_lazy_importer() {
 
     VL_VIRTUALIZATION_END;
 
-    //
+    return;
+}
 
+void test_obfuscator_lazy_importer() {
     VL_CODE_FLATTENING_BEGIN;
 
+    void* user32 = LI_FN(LoadLibraryA)(xorstr_("user32.dll"));
+    //void* kernel32 = LI_MODULE("kernel32.dll").cached(); // *** 
+
+    printf(xorstr_(" user32 => %p \n"), user32);
     LI_FN(MessageBoxA).in(user32)(NULL, xorstr_("hello world"), xorstr_("obfuscator"), 0);
 
     VL_CODE_FLATTENING_END;
@@ -57,7 +63,8 @@ void test_default_api() {
 int main() {
     VL_VIRTUALIZATION_BEGIN;
 
-    test_lazy_importer();
+    test_virtualizer_lazy_importer();
+    test_obfuscator_lazy_importer();
     test_default_api();
 
     VL_VIRTUALIZATION_END;
