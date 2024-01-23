@@ -6,13 +6,13 @@
 	"SignatureMode" : false,
 	"Virtualizer" : {
 		"EntryPoint" : true,
-		"ReferenceCall" : false
+		"ReferenceCall" : true
 	},
 	"Obfuscator" : {
 		"EntryPoint" : false
 	},
 	"Packer" : {
-		"Enable" : true,
+		"Enable" : false,
 		"SymbolData" : false,
 		"AxionMode" : false,
 		"Extension" : [
