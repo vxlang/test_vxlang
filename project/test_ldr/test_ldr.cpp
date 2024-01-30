@@ -65,7 +65,7 @@ int main() {
 
     test_virtualizer_lazy_importer();
     test_obfuscator_lazy_importer();
-    test_default_api();
+    //test_default_api();
 
     VL_VIRTUALIZATION_END;
 

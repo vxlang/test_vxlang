@@ -9,7 +9,7 @@
 		"ReferenceCall" : false
 	},
 	"Obfuscator" : {
-		"EntryPoint" : false
+		"EntryPoint" : true
 	},
 	"Packer" : {
 		"Enable" : true,
@@ -20,15 +20,15 @@
 		"RawData" : [
 		],
 		"DetectDebug" : {
-			"Enable" : true,
+			"Enable" : false,
 			"Message" : "This program is debugging. Please exit the debugger and run it again."
 		},
 		"DetectPatch" : {
-			"Enable" : true,
+			"Enable" : false,
 			"Message" : "The program shell code has been tampered with. Please run it again."
 		},
 		"CheckImage" : {
-			"Enable" : true,	
+			"Enable" : false,	
 			"Message" : "The executable image has been tampered with. Please run it again."			
 		}
 	}	

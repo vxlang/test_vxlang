@@ -6,29 +6,31 @@
 	"SignatureMode" : false,
 	"Virtualizer" : {
 		"EntryPoint" : true,
-		"ReferenceCall" : true
+		"ReferenceCall" : false
 	},
 	"Obfuscator" : {
-		"EntryPoint" : false
+		"EntryPoint" : true
 	},
 	"Packer" : {
-		"Enable" : false,
+		"Enable" : true,
 		"SymbolData" : false,
 		"AxionMode" : false,
 		"Extension" : [
+			{ "..\\bin\\Release\\test_addon64.dll" : "" }
 		],
 		"RawData" : [
+			{ "..\\bin\\Release\\test_ldr_dll64.dll" : "test" }
 		],
 		"DetectDebug" : {
-			"Enable" : true,
+			"Enable" : false,
 			"Message" : "This program is debugging. Please exit the debugger and run it again."
 		},
 		"DetectPatch" : {
-			"Enable" : true,
+			"Enable" : false,
 			"Message" : "The program shell code has been tampered with. Please run it again."
 		},
 		"CheckImage" : {
-			"Enable" : true,	
+			"Enable" : false,	
 			"Message" : "The executable image has been tampered with. Please run it again."			
 		}
 	}	
