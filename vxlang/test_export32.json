@@ -1,0 +1,36 @@
+{
+	"Input" : "..\\bin\\Release\\test_export32.exe",
+	"Output" : "..\\bin\\Release\\test_export32.exe",
+	"Backup" : true,
+	"BaseSectionName" : "",
+	"SignatureMode" : false,
+	"Virtualizer" : {
+		"EntryPoint" : true,
+		"ReferenceCall" : true
+	},
+	"Obfuscator" : {
+		"EntryPoint" : false
+	},
+	"Packer" : {
+		"Enable" : false,
+		"SymbolData" : false,
+		"AxionMode" : false,
+		"Extension" : [
+		],
+		"RawData" : [
+		],
+		"ExportEventHandler" : "TestEventHandle",		
+		"DetectDebug" : {
+			"Enable" : true,
+			"Message" : "This program is debugging. Please exit the debugger and run it again."
+		},
+		"DetectPatch" : {
+			"Enable" : false,
+			"Message" : "The program shell code has been tampered with. Please run it again."
+		},
+		"CheckImage" : {
+			"Enable" : false,	
+			"Message" : "The executable image has been tampered with. Please run it again."			
+		}
+	}	
+}

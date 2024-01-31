@@ -11,6 +11,10 @@
 
 enum VXLANG_EVENT_ID {
     EVENT_LOAD_ADDON = 0xA0000000,
+
+    EVENT_DEBUG_DETECTED = 0xD0000000,
+    EVENT_PATCH_DETECTED,
+    EVENT_CHKIMG_DETECTED,
 };
 
 typedef void* (__stdcall* GetRawDataT)(const char* keyName, uint32_t* size);
