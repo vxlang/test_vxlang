@@ -5,31 +5,24 @@
 	"BaseSectionName" : "",
 	"SignatureMode" : false,
 	"Virtualizer" : {
-		"EntryPoint" : true,
-		"ReferenceCall" : true
+		"EntryPoint" : false,
+		"ReferenceCall" : false
 	},
 	"Obfuscator" : {
 		"EntryPoint" : false
 	},
 	"Packer" : {
 		"Enable" : false,
-		"SymbolData" : false,
-		"AxionMode" : false,
+		"LockLdr" : true,		
+		"SymbolData" : true,
+		"UseAntiTamper" : {
+			"Enable" : false,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
 		"Extension" : [
 		],
 		"RawData" : [
 		],
-		"DetectDebug" : {
-			"Enable" : true,
-			"Message" : "This program is debugging. Please exit the debugger and run it again."
-		},
-		"DetectPatch" : {
-			"Enable" : true,
-			"Message" : "The program shell code has been tampered with. Please run it again."
-		},
-		"CheckImage" : {
-			"Enable" : true,	
-			"Message" : "The executable image has been tampered with. Please run it again."			
-		}
+		"ExportEventHandler" : ""		
 	}	
 }

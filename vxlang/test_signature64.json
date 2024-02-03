@@ -9,27 +9,20 @@
 		"ReferenceCall" : false
 	},
 	"Obfuscator" : {
-		"EntryPoint" : false
+		"EntryPoint" : true
 	},
 	"Packer" : {
 		"Enable" : true,
+		"LockLdr" : true,		
 		"SymbolData" : false,
-		"AxionMode" : false,
+		"UseAntiTamper" : {
+			"Enable" : true,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
 		"Extension" : [
 		],
 		"RawData" : [
 		],
-		"DetectDebug" : {
-			"Enable" : true,
-			"Message" : "This program is debugging. Please exit the debugger and run it again."
-		},
-		"DetectPatch" : {
-			"Enable" : true,
-			"Message" : "The program shell code has been tampered with. Please run it again."
-		},
-		"CheckImage" : {
-			"Enable" : true,	
-			"Message" : "The executable image has been tampered with. Please run it again."			
-		}
+		"ExportEventHandler" : ""
 	}	
 }

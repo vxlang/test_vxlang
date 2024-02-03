@@ -13,23 +13,16 @@
 	},
 	"Packer" : {
 		"Enable" : true,
+		"LockLdr" : true,		
 		"SymbolData" : false,
-		"AxionMode" : false,
+		"UseAntiTamper" : {
+			"Enable" : false,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
 		"Extension" : [
 		],
 		"RawData" : [
 		],
-		"DetectDebug" : {
-			"Enable" : false,
-			"Message" : "This program is debugging. Please exit the debugger and run it again."
-		},
-		"DetectPatch" : {
-			"Enable" : false,
-			"Message" : "The program shell code has been tampered with. Please run it again."
-		},
-		"CheckImage" : {
-			"Enable" : false,	
-			"Message" : "The executable image has been tampered with. Please run it again."			
-		}
-	}	
+		"ExportEventHandler" : ""		
+	}
 }

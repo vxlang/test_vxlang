@@ -68,6 +68,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>test_export.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)vxlang
+
+vxlang.exe --opt-project test_export32.json
+
+cd $(SolutionDir)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

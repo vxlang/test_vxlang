@@ -71,7 +71,7 @@
     <PostBuildEvent>
       <Command>cd $(SolutionDir)vxlang
 
-vxlang.exe --opt-project test_ldr_dll64.json
+vxlang.exe --opt-project test_ldr_dll32.json
 
 cd $(SolutionDir)</Command>
     </PostBuildEvent>
