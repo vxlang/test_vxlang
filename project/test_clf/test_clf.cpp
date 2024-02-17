@@ -19,6 +19,19 @@ void lv1() {
     return;
 }
 
+void hello() {
+    VL_CODE_FLATTENING_BEGIN;
+
+    for (int i = 0; i < 10; ++i) {
+        printf("Hello, World! \n");
+        Sleep(100);
+    }
+
+    VL_CODE_FLATTENING_END;
+
+    return;
+}
+
 void seh() {
     VL_CODE_FLATTENING_BEGIN;
 
@@ -62,13 +75,16 @@ void seh() {
 int main() {
     VL_CODE_FLATTENING_BEGIN;
 
-    seh();
+    hello();
 
     VL_CODE_FLATTENING_END;
 
     //
 
+#if 0
     VL_CODE_FLATTENING_BEGIN;
+
+    seh();
 
     for (int i = 0; i < 10; ++i) {
         printf("%d \n", i);
@@ -91,7 +107,7 @@ int main() {
     }
 
     VL_CODE_FLATTENING_END;
-
+#endif
     return 1;
 }
 
