@@ -72,7 +72,7 @@
     <PostBuildEvent>
       <Command>cd $(SolutionDir)vxlang
 
-vxlang.exe --opt-project test_clf32.json
+vxlang.exe --opt-project test_clf32.json --disable-core
 
 cd $(SolutionDir)</Command>
     </PostBuildEvent>
@@ -97,7 +97,7 @@ cd $(SolutionDir)</Command>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)vxlang
 
-vxlang.exe --opt-project test_clf64.json
+vxlang.exe --opt-project test_clf64.json --disable-core
 
 cd $(SolutionDir)</Command>
     </PostBuildEvent>
