@@ -1,0 +1,28 @@
+{
+	"Input" : "..\\bin\\Release\\test_clang64.exe",
+	"Output" : "..\\bin\\Release\\test_clang64.exe",
+	"Backup" : true,
+	"BaseSectionName" : "",
+	"SignatureMode" : false,
+	"Virtualizer" : {
+		"EntryPoint" : false,
+		"ReferenceCall" : false
+	},
+	"Obfuscator" : {
+		"EntryPoint" : true
+	},
+	"Packer" : {
+		"Enable" : false,
+		"LockLdr" : true,		
+		"SymbolData" : false,
+		"UseAntiTamper" : {
+			"Enable" : true,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
+		"Extension" : [
+		],
+		"RawData" : [
+		],
+		"ExportEventHandler" : ""
+	}	
+}

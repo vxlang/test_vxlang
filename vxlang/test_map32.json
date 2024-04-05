@@ -1,0 +1,32 @@
+{
+	"Input" : "..\\bin\\Release\\test_map32.exe",
+	"Output" : "..\\bin\\Release\\test_map32.exe",
+	"Backup" : true,
+	"BaseSectionName" : "",
+	"MapFilePath" : "..\\bin\\Release\\test_map32.map",
+	"SignatureMode" : false,
+	"Virtualizer" : {
+		"EntryPoint" : false
+	},
+	"Obfuscator" : {
+		"EntryPoint" : true,
+		"Function": [
+			"_main",
+			"?hello@@YAXXZ"
+		]
+	},
+	"Packer" : {
+		"Enable" : false,
+		"LockLdr" : true,		
+		"SymbolData" : false,
+		"UseAntiTamper" : {
+			"Enable" : true,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
+		"Extension" : [
+		],
+		"RawData" : [
+		],
+		"ExportEventHandler" : ""
+	}	
+}
