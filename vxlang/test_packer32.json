@@ -1,0 +1,31 @@
+{
+	"Input" : "..\\bin\\Release\\test_packer32.exe",
+	"Output" : "..\\bin\\Release\\test_packer32.exe",
+	"Backup" : true,
+	"BaseSectionName" : "",
+	"MapFilePath" : "..\\bin\\Release\\test_packer32.map",
+	"SignatureMode" : false,
+	"Virtualizer" : {
+		"EntryPoint" : true
+	},
+	"Obfuscator" : {
+		"EntryPoint" : true,
+		"Function": [
+			"_main",
+			"_printf",
+			"?hello@@YAXXZ"
+		]
+	},
+	"Packer" : {
+		"Enable" : true,
+		"SymbolData" : false,
+		"UseAntiTamper" : {
+			"Enable" : true,
+			"Message" : "The program exits with abnormal behavior. Please run it again."
+		},
+		"Extension" : [
+		],
+		"RawData" : [
+		]
+	}	
+}
