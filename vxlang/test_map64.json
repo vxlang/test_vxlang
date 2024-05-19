@@ -1,32 +1,33 @@
 {
-	"Input" : "..\\bin\\Release\\test_map64.exe",
-	"Output" : "..\\bin\\Release\\test_map64.exe",
-	"Backup" : true,
-	"BaseSectionName" : "",
-	"MapFilePath" : "..\\bin\\Release\\test_map64.map",
-	"SignatureMode" : false,
-	"Virtualizer" : {
-		"EntryPoint" : false
+	"input" : "..\\bin\\Release\\test_map64.exe",
+	"output" : "..\\bin\\Release\\test_map64.exe",
+	"backup" : true,
+	"base-section-name" : "",
+	"map-file-path" : "..\\bin\\Release\\test_map64.map",
+	"virtualizer" : {
+		"entry-point" : false,
+		"virtualization-by-map": [
+		]
 	},
-	"Obfuscator" : {
-		"EntryPoint" : true,
-		"Function": [
+	"obfuscator" : {
+		"entry-point" : true,
+		"obfuscation-by-map": [
+		],		
+		"flattening-by-map": [
 			"main",
-			"?hello@@YAXXZ"
-		]				
+			"?hello@@YAXXZ"		
+		]		
 	},
-	"Packer" : {
-		"Enable" : false,
-		"LockLdr" : true,		
-		"SymbolData" : false,
-		"UseAntiTamper" : {
-			"Enable" : true,
-			"Message" : "The program exits with abnormal behavior. Please run it again."
+	"protector" : {
+		"compress" : false,
+		"symbol-data" : false,
+		"anti-tamper" : {
+			"enable" : false,
+			"message" : "The program exits with abnormal behavior. Please run it again."
 		},
-		"Extension" : [
+		"extension" : [
 		],
-		"RawData" : [
-		],
-		"ExportEventHandler" : ""
-	}	
+		"raw-data" : [
+		]
+	}
 }

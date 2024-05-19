@@ -1,28 +1,31 @@
 {
-	"Input" : "..\\bin\\Release\\test_clang64.exe",
-	"Output" : "..\\bin\\Release\\test_clang64.exe",
-	"Backup" : true,
-	"BaseSectionName" : "",
-	"SignatureMode" : false,
-	"Virtualizer" : {
-		"EntryPoint" : false,
-		"ReferenceCall" : false
+	"input" : "..\\bin\\Release\\test_clang64.exe",
+	"output" : "..\\bin\\Release\\test_clang64.exe",
+	"backup" : true,
+	"base-section-name" : "",
+	"map-file-path" : "",	
+	"virtualizer" : {
+		"entry-point" : true,
+		"virtualization-by-map": [
+		]		
 	},
-	"Obfuscator" : {
-		"EntryPoint" : true
+	"obfuscator" : {
+		"entry-point" : true,
+		"obfuscation-by-map": [
+		],		
+		"flattening-by-map": [
+		]
 	},
-	"Packer" : {
-		"Enable" : false,
-		"LockLdr" : true,		
-		"SymbolData" : false,
-		"UseAntiTamper" : {
-			"Enable" : true,
-			"Message" : "The program exits with abnormal behavior. Please run it again."
+	"protector" : {
+		"compress" : true,
+		"symbol-data" : false,
+		"anti-tamper" : {
+			"enable" : false,
+			"message" : "The program exits with abnormal behavior. Please run it again."
 		},
-		"Extension" : [
+		"extension" : [
 		],
-		"RawData" : [
-		],
-		"ExportEventHandler" : ""
-	}	
+		"raw-data" : [
+		]
+	}
 }

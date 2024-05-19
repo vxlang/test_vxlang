@@ -1,31 +1,34 @@
 {
-	"Input" : "..\\bin\\Release\\test_packer32.exe",
-	"Output" : "..\\bin\\Release\\test_packer32.exe",
-	"Backup" : true,
-	"BaseSectionName" : "",
-	"MapFilePath" : "..\\bin\\Release\\test_packer32.map",
-	"SignatureMode" : false,
-	"Virtualizer" : {
-		"EntryPoint" : true
+	"input" : "..\\bin\\Release\\test_packer32.exe",
+	"output" : "..\\bin\\Release\\test_packer32.exe",
+	"backup" : true,
+	"base-section-name" : "",
+	"map-file-path" : "..\\bin\\Release\\test_packer32.map",
+	"virtualizer" : {
+		"entry-point" : true,
+		"virtualization-by-map": [
+		]
 	},
-	"Obfuscator" : {
-		"EntryPoint" : true,
-		"Function": [
+	"obfuscator" : {
+		"entry-point" : true,
+		"obfuscation-by-map": [
+		],		
+		"flattening-by-map": [
 			"_main",
 			"_printf",
-			"?hello@@YAXXZ"
-		]
+			"?hello@@YAXXZ"		
+		]		
 	},
-	"Packer" : {
-		"Enable" : true,
-		"SymbolData" : false,
-		"UseAntiTamper" : {
-			"Enable" : true,
-			"Message" : "The program exits with abnormal behavior. Please run it again."
+	"protector" : {
+		"compress" : true,
+		"symbol-data" : false,
+		"anti-tamper" : {
+			"enable" : false,
+			"message" : "The program exits with abnormal behavior. Please run it again."
 		},
-		"Extension" : [
+		"extension" : [
 		],
-		"RawData" : [
+		"raw-data" : [
 		]
-	}	
+	}
 }
