@@ -26,43 +26,31 @@ MESSAGEBOXW fpMessageBoxW = NULL;
 
 // Detour function which overrides MessageBoxW.
 int WINAPI DetourMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType) {
-    VL_CODE_FLATTENING_LV_BEGIN(3);
+    VL_VIRTUALIZATION_BEGIN;
 
     int result = fpMessageBoxW(hWnd, L"Hooked!", lpCaption, uType);
 
-    VL_CODE_FLATTENING_LV_END(3);
+    VL_VIRTUALIZATION_END;
 
     return result;
 }
 
 int main() {
-    VL_CODE_FLATTENING_LV_BEGIN(3);
+    
+#ifdef _WIN64
+    const wchar_t dllName[] = L"test_minhk_dll64.dll";
+#else
+    const wchar_t dllName[] = L"test_minhk_dll32.dll";
+#endif
+    auto minhkDll = LoadLibraryW(dllName);
 
-    do {
-        // Initialize MinHook.
-        if (MH_Initialize() != MH_OK) { break; }
+    MessageBoxW(nullptr, L"Test ..", L"", MB_OK);
 
-        // Create a hook for MessageBoxW, in disabled state.
-        if (MH_CreateHook(&MessageBoxW, &DetourMessageBoxW, reinterpret_cast<LPVOID*>(&fpMessageBoxW)) != MH_OK) { break; }
+    FreeLibrary(minhkDll);
 
-        // Enable the hook for MessageBoxW.
-        if (MH_EnableHook(&MessageBoxW) != MH_OK) { break; }
-
-        // Expected to tell "Hooked!".
-        MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
-
-        // Disable the hook for MessageBoxW.
-        if (MH_DisableHook(&MessageBoxW) != MH_OK) { break; }
-
-        // Expected to tell "Not hooked...".
-        MessageBoxW(NULL, L"Not hooked...", L"MinHook Sample", MB_OK);
-
-        // Uninitialize MinHook.
-        if (MH_Uninitialize() != MH_OK) { break; }
-
-    } while (false);
-
-    VL_CODE_FLATTENING_LV_END(3);
+    MessageBoxW(nullptr, L"Test ..", L"", MB_OK);
 
     return 0;
 }
+
+
