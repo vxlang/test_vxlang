@@ -26,18 +26,16 @@ MESSAGEBOXW fpMessageBoxW = NULL;
 
 // Detour function which overrides MessageBoxW.
 int WINAPI DetourMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType) {
-    VL_VIRTUALIZATION_BEGIN;
+    //VL_VIRTUALIZATION_BEGIN;
 
     int result = fpMessageBoxW(hWnd, L"Hooked!", lpCaption, uType);
 
-    VL_VIRTUALIZATION_END;
+    //VL_VIRTUALIZATION_END;
 
     return result;
 }
 
 void Hook() {
-    VL_VIRTUALIZATION_BEGIN;
-
     do {
         // Initialize MinHook.
         if (MH_Initialize() != MH_OK) { break; }
@@ -50,38 +48,74 @@ void Hook() {
 
     } while (false);
 
-    VL_VIRTUALIZATION_END;
-
     return;
 }
 
 void Unhook() {
-    VL_VIRTUALIZATION_BEGIN;
-
     do {
         // Disable the hook for MessageBoxW.
         if (MH_DisableHook(&MessageBoxW) != MH_OK) { break; }
 
     } while (false);
 
-    VL_VIRTUALIZATION_END;
-
     return;
 }
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
-    VL_VIRTUALIZATION_BEGIN;
-
     if (DLL_PROCESS_ATTACH == fdwReason) {
         printf("DLL_PROCESS_ATTACH:: \n");
-        Hook();
+        //Hook();
     }
     else if (DLL_PROCESS_DETACH == fdwReason) {
         printf("DLL_PROCESS_DETACH:: \n");
         Unhook();
     }
 
-    VL_VIRTUALIZATION_END;
-
     return TRUE;
 }
+
+//
+
+
+
+//
+
+// Explained in p. 2 below
+void NTAPI TlsCallback1(PVOID DllHandle, DWORD dwReason, PVOID)
+{
+    if (dwReason == DLL_PROCESS_ATTACH)
+    {
+        __try {
+            DebugBreak();
+        }
+        __except(1) {
+            MessageBox(nullptr, L"", L"", MB_OK);
+        }
+
+        Hook();
+        //MessageBox(0, L"DLL_PROCESS_ATTACH", L"1", 0);
+    }
+}
+
+#ifdef _WIN64
+#pragma comment (linker, "/INCLUDE:_tls_used")  // See p. 1 below
+#pragma comment (linker, "/INCLUDE:tls_callback_func")  // See p. 3 below
+#else
+#pragma comment (linker, "/INCLUDE:__tls_used")  // See p. 1 below
+#pragma comment (linker, "/INCLUDE:_tls_callback_func")  // See p. 3 below
+#endif
+
+// Explained in p. 3 below
+#ifdef _WIN64
+#pragma const_seg(".CRT$XLC")
+EXTERN_C const
+#else
+#pragma data_seg(".CRT$XLC")
+EXTERN_C
+#endif
+PIMAGE_TLS_CALLBACK tls_callback_func[] = { TlsCallback1, };
+#ifdef _WIN64
+#pragma const_seg()
+#else
+#pragma data_seg()
+#endif //_WIN64
