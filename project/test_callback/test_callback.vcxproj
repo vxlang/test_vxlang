@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{49E9EAB3-7B33-42EA-A0DA-6735EC75F975}</ProjectGuid>
-    <RootNamespace>testclf</RootNamespace>
+    <ProjectGuid>{EC3837BC-8528-4FE9-9B3E-E9060AADC573}</ProjectGuid>
+    <RootNamespace>testldr</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -49,8 +49,8 @@
     <TargetName>$(ProjectName)64</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)32</TargetName>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -60,19 +60,22 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
+      <ModuleDefinitionFile>test_callback.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(OutDir);</AdditionalLibraryDirectories>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)vxlang
 
-vxlang.exe --opt-project test_clf32.json --disable-core
+vxlang.exe --opt-project test_ldr32.json
 
 cd $(SolutionDir)</Command>
     </PostBuildEvent>
@@ -85,27 +88,31 @@ cd $(SolutionDir)</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
+      <ModuleDefinitionFile>test_callback.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(OutDir);</AdditionalLibraryDirectories>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)vxlang
 
-vxlang.exe --opt-project test_clf64.json --disable-core
+vxlang.exe --opt-project test_ldr64.json
 
 cd $(SolutionDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="test_clf.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="test_callback.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
